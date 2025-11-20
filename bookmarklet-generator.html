@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bookmarklet Generator</title>
+    <script>
+        function generateBookmarklet() {
+            const proxyUrl = document.getElementById('proxyUrl').value;
+            const bookmarkletCode = `javascript:(function(){var w=window.open('about:blank');w.document.write('<script>window.location="${proxyUrl}";</script>');})();`;
+            
+            document.getElementById('bookmarkletCode').value = bookmarkletCode;
+            document.getElementById('bookmarkletLink').href = bookmarkletCode;
+        }
+    </script>
+</head>
+<body>
+    <h1>Stealth Bookmarklet Generator</h1>
+    <input type="text" id="proxyUrl" placeholder="Enter proxy URL" value="https://corrosion.pro">
+    <button onclick="generateBookmarklet()">Generate Bookmarklet</button>
+    <br><br>
+    <textarea id="bookmarkletCode" rows="3" cols="80" readonly></textarea>
+    <br>
+    <a href="#" id="bookmarkletLink">Drag this link to bookmarks</a>
+</body>
+</html>
