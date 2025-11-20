@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> </title>
+    <script>
+        function openStealthTab() {
+            // Open about:blank and inject proxy
+            const newWindow = window.open('about:blank', '_blank');
+            const proxyUrl = "https://corrosion.pro";
+            
+            newWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>New Tab</title>
+                    <script>
+                        window.location.href = "${proxyUrl}";
+                    </script>
+                </head>
+                <body>
+                    Redirecting...
+                </body>
+                </html>
+            `);
+            
+            // Close original window
+            window.close();
+        }
+        
+        // Execute on load
+        window.onload = openStealthTab;
+    </script>
+</head>
+<body>
+</body>
+</html>
